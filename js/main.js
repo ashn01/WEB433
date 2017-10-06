@@ -1,13 +1,3 @@
-/*********************************************************************************
-* WEB422 – Assignment 03
-* I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part of this
-* assignment has been copied manually or electronically from any other source (including web sites) or
-* distributed to other students.
-*
-* Name: Youngmin Kim Student ID: 109-161-158 Date: 2017-10-06
-*
-********************************************************************************/
-
 var viewModel = {
   teams: ko.observableArray([]),
   employees: ko.observableArray([]),
