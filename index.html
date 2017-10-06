@@ -38,22 +38,40 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <strong>[ Team Name ]</strong>
-            <button class="btn btn-primary btn-xs pull-right">Save</button>
-          </div>
-          <div class="panel-body">
-            <h5>Team Lead</h5>
-            <select class="single"></select>
-            <h5>Team Members</h5>
-            <select class="multiple"></select>
-            <h5>Projects</h5>
-            <select class="multiple"></select>
+
+      <div style="display:none" data-bind="visible:true, foreach: teams">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <strong data-bind="text:TeamName"></strong>
+              <button class="btn btn-primary btn-xs pull-right"
+              data-bind="click: saveTeam">Save</button>
+
+            </div>
+            <div class="panel-body">
+              <h5>Team Lead</h5>
+              <select class="single"
+              data-bind="value:TeamLead,
+              options:$parent.employees,
+              optionsText:function(item) { return ko.unwrap(item.FirstName) + ' ' + ko.unwrap(item.LastName); },
+              optionsValue:function(item){return item._id;}"></select>
+              <h5>Team Members</h5>
+              <select multiple="true" class="multiple"
+              data-bind="selectedOptions:Employees,
+              options:$parent.employees,
+              optionsText:function(item) { return ko.unwrap(item.FirstName) + ' ' + ko.unwrap(item.LastName); },
+              optionsValue: function(item) { return item._id; }"></select>
+              <h5>Projects</h5>
+              <select multiple="true" class="multiple"
+              data-bind="selectedOptions:Projects,
+              options:$parent.projects,
+              optionsText:function(item) { return item.ProjectName; },
+              optionsValue:function(item) { return item._id; }"></select>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
